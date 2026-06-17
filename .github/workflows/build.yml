@@ -56,11 +56,15 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
 
       - name: Install Flux CLI
-        if: github.ref_name == github.event.repository.default_branch
+        # ⚠️ Temporarily skipped
+        if: false # TODO: Re-enable
+        #if: github.ref_name == github.event.repository.default_branch
         uses: fluxcd/flux2/action@main
 
       - name: Push deployment.yaml to OCI artifact
-        if: github.ref_name == github.event.repository.default_branch
+        # ⚠️ Temporarily skipped
+        if: false # TODO: Re-enable
+        #if: github.ref_name == github.event.repository.default_branch
         run: |
           if [ ! -f "k8s/deployment.yaml" ]; then
             echo "k8s/deployment.yaml not found, skipping OCI push"
